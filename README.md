@@ -32,6 +32,14 @@ In the folder code/,
 
 ./SRH [network path] [query path] [detour factor] [candidate path]
 
+For dynamic edge weights,
+
+./shortesPathD [network path] [query path] [updatedEdges path]
+
+./SORD [network path] [query path] [detour factor] [updatedEdges path]
+
+./SRHD [network path] [query path] [detour factor] [candidate path] [updatedEdges path]
+
 The default setting uses
 
 network path=../data/network_NYC.txt
@@ -42,9 +50,11 @@ detour factor=0.05
 
 candidate path=../data/candidate5_NYC.txt
 
+updatedEdges path=../data/update/update1.txt
+
 A complete statement is ./SRH ../data/network_NYC.txt ../data/qnNYC/qn5000 0.05 ../data/candidate5_NYC.txt
 
-The output of the screen contains the maximum value, execution time, and memory cost and a detailed load distribution recorded in load_[SHORT/IPM/BRSOR/SRH].txt, where each line contains the edge id, the time step, and the corresponding load.
+The output of the screen contains the maximum value, execution time, and memory cost and a detailed load distribution recorded in load_[SHORT/IPM/BRSOR/SRH].txt, where each line contains the edge id, the time step, and the corresponding load. If the dynamic versions of algorithms are executed, there is an update time following the execution time.
 
 You may want to generate the candidate yourself by Statistic.
 
@@ -65,5 +75,7 @@ Each query file contains the number of queries |Q|, the number of steps T, and t
 Each candidate file contains the number of candidate edge-step pair |C| and the starting step in the first line, the mean value and the confidence radius of each Q^t in the following T lines, and the edge id and the step id (e,\tau) in the following |C|.
 
 Each history file in the history folder contains the queries in the previous 20 days in the same format as a query file.
+
+Each update file in the update folder contains the number of edge weight updates in the first line, the edge id, the new weights, and the update time in the following lines.
 
 
