@@ -4,15 +4,24 @@ LIBS = -lrt
 CFLAGS = --std=c++11 -W -Wall -Wno-sign-compare -O2 -s -pipe -mmmx -msse -msse2 -msse3 -mcmodel=large
 TARGET = ./all
 
-all: shortestPath SOR SRH BR IPM Statistic 
+all: shortestPath shortestPathD SOR SORD SRH SRHD BR IPM Statistic
 shortestPath: monitor.h shortestPath.cpp
 	$(CXX) $(CFLAGS) -o shortestPath shortestPath.cpp $(LIBS) -D WATCH_MEM
+	
+shortestPathD: monitor.h shortestPath_dynamic.cpp
+	$(CXX) $(CFLAGS) -o shortestPathD shortestPath_dynamic.cpp $(LIBS) -D WATCH_MEM
 
 SOR: monitor.h SOR.cpp
 	$(CXX) $(CFLAGS) -o SOR SOR.cpp $(LIBS) -D WATCH_MEM
+	
+SORD: monitor.h SOR_dynamic.cpp
+	$(CXX) $(CFLAGS) -o SORD SOR_dynamic.cpp $(LIBS) -D WATCH_MEM
 
 SRH: monitor.h SRH.cpp
 	$(CXX) $(CFLAGS) -o SRH SRH.cpp $(LIBS) -D WATCH_MEM
+
+SRHD: monitor.h SRH_dynamic.cpp
+	$(CXX) $(CFLAGS) -o SRHD SRH_dynamic.cpp $(LIBS) -D WATCH_MEM
 
 BR: monitor.h BR.cpp
 	$(CXX) $(CFLAGS) -o BR BR.cpp $(LIBS) -D WATCH_MEM
