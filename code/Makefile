@@ -4,7 +4,7 @@ LIBS = -lrt
 CFLAGS = --std=c++11 -W -Wall -Wno-sign-compare -O2 -s -pipe -mmmx -msse -msse2 -msse3 -mcmodel=large
 TARGET = ./all
 
-all: shortestPath shortestPathD SOR SORD SRH SRHD BR IPM Statistic
+all: shortestPath shortestPathD SOR SORD SRH SRHD BR IPM Statistic GRO
 shortestPath: monitor.h shortestPath.cpp
 	$(CXX) $(CFLAGS) -o shortestPath shortestPath.cpp $(LIBS) -D WATCH_MEM
 	
@@ -28,6 +28,9 @@ BR: monitor.h BR.cpp
 
 IPM: monitor.h IPM.cpp
 	$(CXX) $(CFLAGS) -o IPM IPM.cpp $(LIBS) -D WATCH_MEM
+
+GRO: monitor.h GRO.cpp
+	$(CXX) $(CFLAGS) -o GRO GRO.cpp $(LIBS) -D WATCH_MEM
 
 Statistic: monitor.h Statistic.cpp
 	$(CXX) $(CFLAGS) -o Statistic Statistic.cpp $(LIBS) -D WATCH_MEM
