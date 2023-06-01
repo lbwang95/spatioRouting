@@ -28,6 +28,8 @@ In the folder code/,
 
 ./BR [network path] [query path] [detour factor]
 
+./GRO [network path] [query path] [detour factor]
+
 ./SOR [network path] [query path] [detour factor]
 
 ./SRH [network path] [query path] [detour factor] [candidate path]
